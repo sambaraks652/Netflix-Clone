@@ -1,6 +1,6 @@
 import React from "react";
 import "./Login.css";
-import Logo from "../../assets/logo.png";
+import logo from "../../assets/logo.png";
 
 const Login = () => {
   return (
@@ -8,6 +8,11 @@ const Login = () => {
       <img src={logo} className="login-logo" alt="" />
       <div className="login-form">
         <h1>Sign In</h1>
+        <form>
+          <input type="text" placeholder="Your name" />
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="password" />
+        </form>
       </div>
     </div>
   );
