@@ -21,9 +21,12 @@ const TitleCards = ({ title, category }) => {
   };
 
   useEffect(() => {
-    fetch("https://api.themoviedb.org/3/genre/movie/list?language=en", options)
-      .then((res) => res.json())
-      .then((res) => setApiData(Response.results))
+    fetch(
+      "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => setApiData(response.results))
       .catch((err) => console.error(err));
 
     cardsRef.current.addEventListener("wheel", handleWheel);
@@ -36,7 +39,10 @@ const TitleCards = ({ title, category }) => {
         {apiData.map((card, index) => {
           return (
             <div className="card" key={index}>
-              <img src={card.backdrop_path} alt="" />
+              <img
+                src={`https://image.tmdb.org/t/p/w500` + card.backdrop_path}
+                alt=""
+              />
               <p>{card.original_title}</p>
             </div>
           );
