@@ -22,7 +22,7 @@ const TitleCards = ({ title, category }) => {
 
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
+      `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1`,
       options
     )
       .then((response) => response.json())
@@ -37,15 +37,13 @@ const TitleCards = ({ title, category }) => {
       <h2>{title ? title : "Popular on Netflix"}</h2>
       <div className="card-list" ref={cardsRef}>
         {apiData.map((card, index) => {
-          return (
-            <div className="card" key={index}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500` + card.backdrop_path}
-                alt=""
-              />
-              <p>{card.original_title}</p>
-            </div>
-          );
+          <div className="card" key={index}>
+            <img
+              src={`https://image.tmdb.org/t/p/w500` + card.backdrop_path}
+              alt=""
+            />
+            <p>{card.original_title}</p>
+          </div>;
         })}
       </div>
     </div>
